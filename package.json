@@ -1,0 +1,35 @@
+{
+  "name": "ms-sample-auth",
+  "description": "sample authentication microservice",
+  "author": "lukasa1993",
+  "license": "MIT",
+  "main": "server.js",
+  "type": "module",
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "@aws-sdk/client-s3": "^3.150.0",
+    "@aws-sdk/s3-presigned-post": "^3.150.0",
+    "@aws-sdk/s3-request-presigner": "^3.150.0",
+    "bluebird": "^3.7.2",
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "express-validator": "^6.14.2",
+    "helmet": "^5.1.1",
+    "lodash": "^4.17.21",
+    "maikai": "^0.8.1",
+    "metalogger": "^2.2.1",
+    "morgan": "^1.10.0",
+    "node-fetch": "^3.2.10",
+    "nodebootstrap-server": "^2.2.0",
+    "otplib": "^12.0.1",
+    "pg": "^8.7.3",
+    "qs": "^6.11.0",
+    "uuid": "^8.3.2",
+    "validator": "^13.7.0"
+  },
+  "scripts": {
+    "start": "nodemon -L -e js,coffee,jade,handlebars server.js"
+  }
+}

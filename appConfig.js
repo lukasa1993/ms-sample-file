@@ -2,11 +2,13 @@ import scopeCheck  from '@lukasa1993/scope-check';
 import healthcheck from 'maikai';
 import metalogger  from 'metalogger';
 import morgan      from 'morgan';
+import S3          from './lib/modules/s3/index.js';
 
 import external from './lib/routes/external/index.js';
 import internal from './lib/routes/internal/index.js';
 
 const log = metalogger();
+const s3 = new S3()
 
 function serviceRoutes(app) {
   app.use(healthcheck().express());
@@ -43,6 +45,8 @@ export default async function (app, callback) {
   app.use(morgan(':clientaddr :method :url :status :response-time ms - :res[content-length]', { skip: req => req.originalUrl === '/health' }));
   serviceRoutes(app);
   setupErrorHandling(app);
+
+  await s3.createBucket();
 
   if (typeof callback === 'function') {
     callback(app);
